@@ -50,13 +50,8 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(IEnumerable<Product>), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<IEnumerable<Product>>> GetProductByCategory(string category)
         {
-            var product = await _repository.GetProductByCategory(category);
-            if (product == null)
-            {
-                _logger.LogError($"Product with category name: {category}, not found.");
-                return NotFound();
-            }
-            return Ok(product);
+            var products = await _repository.GetProductByCategory(category);
+            return Ok(products);
         }
 
 
@@ -88,6 +83,7 @@ namespace Catalog.API.Controllers
             }
             return BadRequest();
         }
+
 
         [HttpDelete("{id:length(24)}", Name = "DeleteProduct")]
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
