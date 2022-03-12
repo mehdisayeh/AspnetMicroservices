@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/Basket.API",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:5001",
       "sslPort": 0
@@ -26,6 +30,12 @@
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5001"
+    },
+    "Docker": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "publishAllPorts": true
     }
   }
 }

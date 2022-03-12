@@ -36,8 +36,9 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> GetProductById(string id)
         {
+            _logger.LogInformation($"Getting product with id: {id}.");
             var product = await _repository.GetProduct(id);
-            if(product == null)
+            if (product == null)
             {
                 _logger.LogError($"Product with id: {id}, not found.");
                 return NotFound();
@@ -59,7 +60,7 @@ namespace Catalog.API.Controllers
         [ProducesResponseType(typeof(Product), (int)HttpStatusCode.OK)]
         public async Task<ActionResult<Product>> CreateProduct([FromBody] Product product)
         {
-            if(product == null)
+            if (product == null)
             {
                 return BadRequest();
             }
@@ -75,7 +76,7 @@ namespace Catalog.API.Controllers
             if (product != null)
             {
                 bool isUpdated = await _repository.UpdateProduct(product);
-                if(isUpdated)
+                if (isUpdated)
                 {
                     return Ok(product);
                 }

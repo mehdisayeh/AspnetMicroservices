@@ -19,7 +19,7 @@ namespace Basket.API.Repositories
         {
             var basket = await _redisCache.GetStringAsync(username);
             if (String.IsNullOrEmpty(basket))
-                return null;
+                return null; 
 
             return JsonConvert.DeserializeObject<ShoppingCart>(basket);
         }
